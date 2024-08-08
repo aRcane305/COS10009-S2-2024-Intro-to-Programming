@@ -1,0 +1,10 @@
+AllCops:
+  TargetRubyVersion: 3.3.4
+
+Style/MethodDefParentheses:
+  EnforcedStyle: require_parentheses
+
+Style/Return:
+  Enabled: false
+
+# You can add more cops and their configurations here
