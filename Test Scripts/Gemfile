@@ -6,3 +6,5 @@ gem 'debug'
 gem 'rubocop'
 gem 'ruby-lsp'
 gem 'solargraph'
+gem "gosu"
+gem 'rails'
