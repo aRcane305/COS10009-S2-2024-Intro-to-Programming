@@ -1,29 +1,20 @@
-# Given the seat number for the customer returns the price for that customer's meal
-def get_total_for_customer(x)
-  puts("Enter price of entre for customer #{x}: ")
-  entre_price = gets.to_i
-  puts("Enter price of main for customer #{x}: ")
-  main_price = gets.to_i
-  puts("Enter price of dessert for customer #{x}: ")
-  dessert_price = gets.to_i
+# Declare your variables and assign them values here: 
+integer = 128
+string = "programming is great!"
+boolean = false
+float = 2.25
 
-  main_price + entre_price + dessert_price
-end
 
-# calculates the total price for the meals at a table:
-def calculate_total_for_table_of_four
-  first_customer_price = get_total_for_customer(1)
-  second_customer_price = get_total_for_customer(2)
-  third_customer_price = get_total_for_customer(3)
-  fourth_customer_price = get_total_for_customer(4)
 
-  first_customer_price + second_customer_price + third_customer_price + fourth_customer_price
-end
+# Complete the following code
+long_message = "I think " +  string
+sum = 128 + integer
+subtraction = 2.5 - float
+logic = false == boolean
 
-def main
-  # calculate and print the total for a table of four
-  puts 'Calculating the total for the table of 4: '
-  puts 'The total for the table is: ' + calculate_total_for_table_of_four.to_s
-end
-
-main
+# Print out the values of the above 4 variables to the terminal by 
+# completing the following:
+puts "The message is: " + long_message
+puts "The sum is: " + sum.to_s
+puts "The subtraction is: " + subtraction.to_s
+puts "The logic is: " + logic.to_s
