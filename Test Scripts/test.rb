@@ -1,17 +1,11 @@
-class Car
-  attr_accessor :make, :model, :year
-  def initialize(ma, mo, ye)
-  puts "hello"
-  @make = ma
-  @model = mo
-  @year = ye
-  end
+def count_number_of_lines(a_file)
+  lines = File.readlines(a_file)
+  return lines
 end
 
+def main()
+  lines.count = lines
+  puts(lines.count)
+end
 
-car1 = Car.new("Toyota" , "Kluger" , 2023)
-car2 = Car.new("BMW" , "Series 5" , 2023)
-
-puts car1.make
-
-puts car2.model
+main()
