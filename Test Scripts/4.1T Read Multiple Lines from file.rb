@@ -1,12 +1,8 @@
 # writes the number of lines then each line as a string.
 
-def write_data_to_file(file_name)
-  file_name.puts('5')
-  file_name.puts('Fred')
-  file_name.puts('Sam')
-  file_name.puts('Jill')
-  file_name.puts('Jenny')
-  file_name.puts('Zorro')
+def write_data_to_file(a_file)
+  data = ['5', 'Fred', 'Sam', 'Jill', 'Jenny', 'Zorro']
+  data.each { |line| a_file.puts(line) }
 end
 
 # reads in each line.
@@ -15,26 +11,20 @@ end
 # so that it uses a loop which repeats
 # acccording to the number of lines in the File
 # which is given in the first line of the File
-def read_data_from_file(file_name)
- count = file_name.gets.to_i()
- puts count.to_s()
- puts file_name.gets()
- puts file_name.gets()
- puts file_name.gets()
- puts file_name.gets()
- puts file_name.gets()
+def read_data_from_file(a_file)
+  count = a_file.gets.to_i()
+  puts count.to_s()
+  puts a_file.gets()
+  puts a_file.gets()
+  puts a_file.gets()
+  puts a_file.gets()
+  puts a_file.gets()
 end
 
-def open_file_for_writing(file_name)
-  file_name = File.new("mydata.txt", "w") # open for writing
-  write_data_to_file(file_name)
-  file_name.close()
-end
-
-def open_file_for_reading(file_name)
-  file_name = File.new("mydata.txt", "r") # open for reading
-  read_data_from_file(file_name)
-  file_name.close()
+def open_data_for_writing(a_file)
+  a_file = File.new("mydata.txt", "w") # open for writing
+  write_data_to_file(a_file)
+  a_file.close()
 end
 # Do the following in WEEK 4
 # writes data to a file then reads it in and prints
@@ -42,9 +32,12 @@ end
 # you should improve the modular decomposition of the
 # following by moving as many lines of code
 # out of main as possible.
-def main()
-  open_file_for_writing(file_name)
-end
+def main
+  open_data_for_writing(a_file)
 
+  a_file = File.new("mydata.txt", "r") # open for reading
+  read_data_from_file(a_file)
+  a_file.close()
+end
 
 main

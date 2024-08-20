@@ -1,7 +1,7 @@
 require 'csv'
 
 def generate_combinations(length = 3)
-  characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+  characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789'
   combinations = characters.chars.repeated_permutation(length).map(&:join)
   combinations
 end
