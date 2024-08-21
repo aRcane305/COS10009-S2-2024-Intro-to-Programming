@@ -1,5 +1,5 @@
 def main
-  puts 'Hello World' # prints Hello World
+  puts 'Hello, World!' # prints Hello World
 end
 
 main
