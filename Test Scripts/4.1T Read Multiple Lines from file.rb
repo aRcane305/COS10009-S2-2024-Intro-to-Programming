@@ -16,8 +16,10 @@ end
 def read_data_from_file(file_name)
   File.open(file_name, "r") do |file|
     count = file.gets.to_i
-    count.times do
+    i = 0
+    while i < count
       puts file.gets
+      i += 1
     end
   end
 end
