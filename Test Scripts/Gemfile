@@ -8,3 +8,4 @@ gem 'ruby-lsp'
 gem 'solargraph'
 gem "gosu"
 gem 'rails'
+gem 'steep'

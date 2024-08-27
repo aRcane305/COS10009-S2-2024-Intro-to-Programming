@@ -4,16 +4,19 @@ def main_menu ()
   finished = false
   begin
     puts "Main Menu:"
-    puts "1 Load Albums"
+    puts "1 Read in Albums"
     puts "2 Display Albums"
-    puts "3 Exit"
-    choice = read_integer_in_range("Please enter your choice:", 1, 3)
+    puts "3 Selecct an Album to play"
+    puts "5 Exit the application"
+    choice = read_integer_in_range("Please enter your choice:", 1, 5)
     case choice
     when 1
-      load_albums()
+      read_in_albums()
     when 2
       display_albums()
     when 3
+      select_albums()
+    when 5
       finished = true
     else
       puts "Please select again"
@@ -21,14 +24,15 @@ def main_menu ()
   end until finished
 end
 
-def load_albums()
-  read_string("You selected Load Albums. Press enter to continue")
+def read_in_albums()
+  #stub
+  # store it in albums.txt
 end
 def display_albums()
   finished = false
   begin
     puts "Display Albums Menu:"
-    puts "1 Display All Albums"
+    puts "1 Display all Albums"
     puts "2 Display Albums by Genre"
     puts "3 Return to Main Menu"
     choice = read_integer_in_range("Please enter your choice:", 1, 3)
