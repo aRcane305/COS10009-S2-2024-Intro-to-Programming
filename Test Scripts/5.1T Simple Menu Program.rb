@@ -4,10 +4,6 @@ require '/Users/arcane/RubymineProjects/Ruby/Test Scripts/input_functions.rb'
 # you could use the input functions instead of puts and gets
 
 def display_albums
-
-  # complete this code to support the
-  # menu options below - use the main menu code
-  # to guide you.
   finished = false
   begin
     puts 'Display Albums Menu:'
