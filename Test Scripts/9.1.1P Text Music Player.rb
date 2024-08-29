@@ -1,4 +1,4 @@
-require './input_functions.rb'
+require_relative './input_functions.rb'
 
 def main_menu ()
   finished = false

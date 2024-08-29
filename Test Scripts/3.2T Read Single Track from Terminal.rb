@@ -1,4 +1,4 @@
-require "./input_functions"
+require_relative "./input_functions"
 # put your code below
 class Track
   attr_accessor :name, :location
