@@ -8,12 +8,12 @@ class Track
 end
 
 def read_track(file_name)
-  File.open(file_name, "r") do |file|
-    name = file.gets.chomp
-    location = file.gets.chomp
-    Track.new(name, location)
-  end
+  a_file = File.open(file_name, "r")
+  name = a_file.gets.chomp
+  location = a_file.gets.chomp
+  Track.new(name, location)
 end
+
 
 def print_track(track)
   puts "Track name: #{track.name}"
@@ -22,11 +22,9 @@ end
 
 def main()
   file_name = "track.txt"
-  File.open(file_name, "r") do |file|
-    track = read_track(file_name)
-    print_track(track)
-  end
+  a_file = File.open(file_name, "r")
+  track = read_track(file_name)
+  print_track(track)
 end
-
 # leave this line
 main() if __FILE__ == $0

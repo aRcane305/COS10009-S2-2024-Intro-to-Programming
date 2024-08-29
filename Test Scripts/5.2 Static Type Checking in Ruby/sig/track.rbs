@@ -3,7 +3,7 @@
 # Classes
 class Object
   private
-  def read_track: (File a_file) -> nil
+  def read_track: (File a_file) -> Track
   def print_track: (Track track) -> nil
   def main: -> nil
 end
