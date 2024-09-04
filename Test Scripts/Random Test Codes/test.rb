@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-def whatdoesthisfunctiondo?(data)
+def addition_sequence(data)
   data = ["6", "-3", "3", "8", "1"]
   result = 0;
   i = 0
@@ -12,5 +12,6 @@ def whatdoesthisfunctiondo?(data)
 end
 
 def main()
-  whatdoesthisfunctiondo?
+  addition_sequence(data)
+  puts(result)
 end

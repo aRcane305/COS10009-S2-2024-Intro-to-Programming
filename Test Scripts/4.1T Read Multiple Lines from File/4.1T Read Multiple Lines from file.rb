@@ -22,8 +22,8 @@ def read_data_from_file(file_name)
 end
 
 def main
-  write_data_to_file("mydata.txt")
-  read_data_from_file("mydata.txt")
+  write_data_to_file(File.join(__dir__, "mydata.txt"))
+  read_data_from_file(File.join(__dir__, "mydata.txt"))
 end
 
 main if __FILE__ == $0

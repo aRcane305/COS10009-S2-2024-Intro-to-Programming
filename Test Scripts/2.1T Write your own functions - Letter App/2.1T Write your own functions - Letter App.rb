@@ -1,5 +1,5 @@
 # calling the file input_functions.rb
-require './input_functions'
+require_relative './input_functions'
 
 # returns the title, first name and last name of the recipient as one line
 def read_name

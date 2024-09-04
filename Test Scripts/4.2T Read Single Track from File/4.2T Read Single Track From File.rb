@@ -21,7 +21,7 @@ def print_track(track)
 end
 
 def main()
-  file_name = "track.txt"
+  file_name = File.join(__dir__, "track.txt")
   a_file = File.open(file_name, "r")
   track = read_track(file_name)
   print_track(track)

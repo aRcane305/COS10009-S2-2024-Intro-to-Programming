@@ -1,4 +1,4 @@
-require './input_functions'
+require_relative './input_functions'
 
 module Genre
   POP, CLASSIC, JAZZ, ROCK = *1..4
