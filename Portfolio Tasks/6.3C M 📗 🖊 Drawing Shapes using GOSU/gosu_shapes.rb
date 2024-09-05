@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'gosu'
-require './circle'
+require_relative './circle'
 
 # The screen has layers: Background, middle, top
 module ZOrder

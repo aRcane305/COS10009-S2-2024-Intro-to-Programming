@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'gosu'
-require './bezier_curve'
+require_relative './bezier_curve'
 
 # The screen has layers: Background, middle, top
 
