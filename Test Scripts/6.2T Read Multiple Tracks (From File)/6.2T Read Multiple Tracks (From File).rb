@@ -22,7 +22,7 @@ def read_tracks(music_file)
   index = 0
   while index < count
     track = read_track(music_file)
-    tracks << track
+    tracks[index] = track
     index += 1
   end
   return tracks
