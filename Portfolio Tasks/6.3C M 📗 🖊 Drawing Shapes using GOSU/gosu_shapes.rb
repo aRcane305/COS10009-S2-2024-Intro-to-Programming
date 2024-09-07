@@ -1,41 +1,49 @@
 require 'rubygems'
 require 'gosu'
-require_relative './circle'
+require_relative './circle' # require by itself doesn't work on Rubymine because I have multiple folders and files.
 
-# The screen has layers: Background, middle, top
+# The screen has layers: Background, Monitor, Ruby Background, Ruby Logo, Top
 module ZOrder
-  BACKGROUND, MIDDLE, TOP = *0..2
+  BACKGROUND, MONITOR, CASE, RUBYBACKGROUND, RUBYLOGO, TOP = *0..5
 end
 
 class DemoWindow < Gosu::Window
   def initialize
-    super(640, 400, false)
+    super(1280, 720, false) # true for fullscreen
   end
 
   def draw
     # see www.rubydoc.info/github/gosu/gosu/Gosu/Color for colours
-    draw_quad(0, 0, 0xff_97ebff, 640, 0, 0xff_97ebff, 0, 400, 0xff_ffffff, 640, 400, 0xff_ffffff, ZOrder::BACKGROUND)
-    draw_quad(40, 40, 0xff_333535, 600, 40, 0xff_333535, 40, 360, 0xff_333535, 600, 360, 0xff_333535, ZOrder::MIDDLE)
-    draw_quad(50, 50, 0xff_b7c6ca, 590, 50, 0xff_767a7b, 50, 350, 0xff_929798, 590, 350, 0xff_767a7b, ZOrder::MIDDLE)
-    draw_triangle(590, 50, 0xff_8511fa, 280, 50, 0xff_8511fa, 590, 250, 0xff_8511fa, ZOrder::MIDDLE, mode=:default)
-    #draw_line(200, 200, Gosu::Color::BLACK, 350, 350, Gosu::Color::BLACK, ZOrder::TOP, mode=:default)
-    # draw_rect works a bit differently:
-    Gosu.draw_rect(220, 100, 200, 200, Gosu::Color::BLACK, ZOrder::TOP, mode=:default)
-    Gosu.draw_rect(300, 360, 40, 40, 0xff_232525, ZOrder::TOP, mode=:default)
-    Gosu.draw_rect(250, 260, 100, 20, Gosu::Color::WHITE, ZOrder::TOP, mode=:default)
+    draw_quad(0, 0, 0xff_97ebff, 1280, 0, 0xff_97ebff, 0, 720, 0xff_ffffff, 1280, 720, 0xff_ffffff, ZOrder::BACKGROUND)                                                   # background sky box gradient
+
+    Gosu.draw_rect(120, 103, 700, 394, 0xff_333535, ZOrder::MONITOR)                                                                                                      # monitor frame
+    draw_quad(130, 113, 0xff_b7c6ca, 810, 113, 0xff_767a7b, 130, 487, 0xff_929798, 810, 487, 0xff_b7c6ca, ZOrder::MONITOR)                                                # monitor grey screen background gradient     # monitor support stand
+    Gosu.draw_rect(380, 527, 180, 45, 0xff_232525, ZOrder::MONITOR)
+    draw_triangle(380, 616, 0xff_232525, 380, 527, 0xff_232525, 440, 527, 0xff_232525, ZOrder::MONITOR)
+    draw_triangle(380, 616, 0xff_232525, 380, 527, 0xff_232525, 320, 616, 0xff_232525, ZOrder::MONITOR)
+    Gosu.draw_rect(440, 497, 60, 70, 0xff_242727, ZOrder::MONITOR)                                                                                                        # monitor base vertical support
+
+    Gosu.draw_rect(855, 103, 285, 490, 0xff_111010, ZOrder::CASE)                                                                                                         # computer case
+    Gosu.draw_rect(855, 590, 285, 11, 0xff_272424, ZOrder::CASE)                                                                                                          # case bottom frame
+    draw_quad(855, 601, 0xff_272424, 930, 601, 0xff_272424, 855, 616, 0xff_272424, 923, 616, 0xff_272424, ZOrder::CASE)                                                   # case left leg
+    draw_quad(1065, 601, 0xff_272424, 1140, 601, 0xff_272424, 1072, 616, 0xff_272424, 1140, 616, 0xff_272424, ZOrder::CASE)                                               # case right leg
+    draw_quad(1060, 105, Gosu::Color::RED, 1065, 105, Gosu::Color::YELLOW, 1060, 588, Gosu::Color::GREEN, 1065, 588, Gosu::Color::BLUE, ZOrder::TOP)                      # case led gradient panel
+    Gosu.draw_rect(857, 105, 201, 483, 0xff_2b2929, ZOrder::TOP)                                                                                                          # case window
+    Gosu.draw_rect(1104, 263, 36, 14, 0xff_2b2929, ZOrder::TOP)                                                                                                           # case button outline
+    Gosu.draw_rect(1106, 265, 34, 10, 0xff_111010, ZOrder::TOP)                                                                                                           # case button
+    Gosu.draw_rect(1114, 269 ,20 , 2, Gosu::Color::WHITE, ZOrder::TOP)                                                                                                    # case button led
+    # ruby background triangle
+    draw_triangle(590, 50, 0xff_8511fa, 280, 50, 0xff_8511fa, 590, 250, 0xff_8511fa, ZOrder::RUBYBACKGROUND)
+
+    Gosu.draw_rect(220, 100, 200, 200, Gosu::Color::BLACK, ZOrder::RUBYLOGO)
+
+    Gosu.draw_rect(250, 260, 100, 20, Gosu::Color::WHITE, ZOrder::RUBYLOGO)
 
     # Circle parameter - Radius
     img2 = Gosu::Image.new(Circle.new(50))
-    # Image draw parameters - x, y, z, horizontal scale (use for ovals), vertical scale (use for ovals), colour
-    # Colour - use Gosu::Image::{Colour name} or .rgb({red},{green},{blue}) or .rgba({alpha}{red},{green},{blue},)
-    # Note - alpha is used for transparency.
-    # drawn as an elipse (0.5 width:)
-    img2.draw(240, 120, ZOrder::TOP, 0.6, 0.6, Gosu::Color::WHITE)
-    img2.draw(340, 120, ZOrder::TOP, 0.6, 0.6, Gosu::Color::WHITE)
-    # drawn as a red circle:
-    #img2.draw(300, 50, ZOrder::TOP, 1.0, 1.0, 0xff_ff0000)
-    # drawn as a red circle with transparency:
-    # img2.draw(300, 250, ZOrder::TOP, 1.0, 1.0, 0x64_ff0000)
+    img2.draw(240, 120, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
+    img2.draw(340, 120, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
+
 
   end
 end
