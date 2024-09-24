@@ -46,17 +46,19 @@ class DemoWindow < Gosu::Window
     Gosu.draw_rect(1106, 265, 34, 10, 0xff_111010, ZOrder::TOP)
     # case button led
     Gosu.draw_rect(1114, 269 ,20 , 2, Gosu::Color::WHITE, ZOrder::TOP)
-    # ruby background triangle
-    draw_triangle(590, 50, 0xff_8511fa, 280, 50, 0xff_8511fa, 590, 250, 0xff_8511fa, ZOrder::RUBYBACKGROUND)
+    # ruby top right background triangle
+    draw_triangle(810, 113, 0xff_8511fa, 280, 113, 0xff_8511fa, 810, 300, 0xff_8511fa, ZOrder::RUBYBACKGROUND)
+    # ruby bottom left background triangle
+    draw_triangle(130, 300, 0xff_ff5733, 130, 487, 0xff_ff5733, 660, 487, 0xff_ff5733, ZOrder::RUBYBACKGROUND)
+    # ruby logo black square
+    Gosu.draw_rect(365, 200, 200, 200, Gosu::Color::BLACK, ZOrder::RUBYLOGO)
+    # ruby logo white bar
+    Gosu.draw_rect(395, 360, 100, 20, Gosu::Color::WHITE, ZOrder::RUBYLOGO)
 
-    Gosu.draw_rect(220, 100, 200, 200, Gosu::Color::BLACK, ZOrder::RUBYLOGO)
-
-    Gosu.draw_rect(250, 260, 100, 20, Gosu::Color::WHITE, ZOrder::RUBYLOGO)
-
-    # Circle parameter - Radius
+    # ruby logo white circles
     img2 = Gosu::Image.new(Circle.new(50))
-    img2.draw(240, 120, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
-    img2.draw(340, 120, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
+    img2.draw(385, 220, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
+    img2.draw(485, 220, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
 
 
   end

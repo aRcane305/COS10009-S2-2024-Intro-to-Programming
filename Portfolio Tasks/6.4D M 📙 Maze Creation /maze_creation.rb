@@ -60,10 +60,47 @@ class GameWindow < Gosu::Window
       column_index += 1
     end
 
-    # now set up the neighbour links
-    # You need to do this using a while loop with another
-    # nested while loop inside.
-
+    # nested loop
+    column_index = 0
+    # loop through the columns
+    # x_cell_count has been defined as 10, we can use this to iterate the loop
+    while (column_index < x_cell_count)
+      # loop the rows of the column
+      row_index = 0
+      while (row_index < y_cell_count)
+        cell = @columns[column_index][row_index]
+        # find north neighbours. all rows except the first one (index 0) have a north neighbour
+        if (row_index > 0)
+          cell.north = 1
+        else
+          cell.north = 0
+        end
+        # find east neighbours. all columns except the last one (index 9) have a east neighbour
+        # x_cell_count - 1 is better, because in the future if more squares are added it still works
+        if (column_index < (x_cell_count - 1))
+          cell.east = 1
+        else
+          cell.east = 0
+        end
+        # find south neighbours, all rows except last row (index 9) will have a south neighbour
+        if (row_index < (y_cell_count - 1))
+          cell.south = 1
+        else
+          cell.south = 0
+        end
+        # find west neighbours, all columns except index 0 will have a west neighbour
+        if (column_index > 0)
+          cell.west = 1
+        else
+          cell.west = 0
+        end
+        # iterate to print into terminal by columns
+        puts("Cell x: " + column_index.to_s + ", y: " + row_index.to_s + " north: " + cell.north.to_s + " south: " + cell.south.to_s + " east: " + cell.east.to_s + " west: " + cell.west.to_s)
+        row_index += 1
+      end
+      puts("---------- End of Column ----------")
+      column_index += 1
+    end
   end
 
   # this is called by Gosu to see if should show the cursor (or mouse)
