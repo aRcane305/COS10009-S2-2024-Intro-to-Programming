@@ -14,15 +14,25 @@ end
 # Display the prompt and return the read integer
 def read_integer prompt
 	value = read_string(prompt)
+	while (!is_numeric?(value))
+		puts("Please enter a number!")
+		value = read_string(prompt)
+	end
 	value.to_i
 end
 
+def is_numeric?(value)
+	if /[^0-9]/.match(value) == nil
+		return true  # put in return statemement
+	end
+	return false
+end
 # Read an integer between min and max, prompting with the string provided
 
 def read_integer_in_range(prompt, min, max)
 	value = read_integer(prompt)
 	while (value < min or value > max)
-		puts "Please enter a value between " + min.to_s + min.to_s + ": "
+		puts "Please enter a value between " + min.to_s + " and " + max.to_s + ": "
 		value = read_integer(prompt);
 	end
 	value
@@ -41,7 +51,8 @@ def read_boolean prompt
 end
 
 # Test the functions above
-=begin
+
+
 def main
 	puts "String entered is: " + read_string("Enter a String: ")
 	puts "Boolean is: " + read_boolean("Enter yes or no:").to_s
@@ -49,6 +60,6 @@ def main
 	puts "Integer is: " + read_integer_in_range("Enter an integer between 3 and 6: ", 3, 6).to_s
 end
 
-main
-=end
+main if __FILE__ == $0
+
 
