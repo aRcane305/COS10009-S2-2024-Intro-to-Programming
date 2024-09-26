@@ -41,11 +41,17 @@ class DemoWindow < Gosu::Window
     # Draw background color
     Gosu.draw_rect(0, 0, WIN_WIDTH, WIN_HEIGHT, @background, ZOrder::BACKGROUND, mode=:default)
     # Draw the rectangle that provides the background.
-    # ????
+    # rectangle only appears when hover, code checks for mouse. cant put this in def mouse_over_button as the drawing happens here
+    if mouse_over_button(mouse_x, mouse_y)
+      # Draw a grey background for the button when the mouse is over it
+      # the rectangle is shifted up 2 units, left 2 units, and extended 4 units each side in order to form the perimeter
+      Gosu.draw_rect(48, 48, 104, 54, Gosu::Color::BLACK, ZOrder::MIDDLE, mode=:default)
+    end
     # Draw the button
     Gosu.draw_rect(50, 50, 100, 50, Gosu::Color::GREEN, ZOrder::TOP, mode=:default)
     # Draw the button text
-    @button_font.draw("Click me", 60, 60, ZOrder::MIDDLE, 1.0, 1.0, Gosu::Color::BLACK)
+    # changed to TOP as it was not showing earlier, MIDDLE meant that it was below the button
+    @button_font.draw("Click me", 60, 60, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
     # Draw the mouse_x position
     @info_font.draw("mouse_x: #{mouse_x}", 20, 370, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
     # Draw the mouse_y position
@@ -58,7 +64,8 @@ class DemoWindow < Gosu::Window
   # This still needs to be fixed!
 
   def mouse_over_button(mouse_x, mouse_y)
-    if ((mouse_x > 50 and mouse_x < 150) and (mouse_y > 50 and mouse_x < 100))
+    # changed to mouse_y and mouse_y
+    if ((mouse_x > 50 and mouse_x < 150) and (mouse_y > 50 and mouse_y < 100))
       true
     else
       false
