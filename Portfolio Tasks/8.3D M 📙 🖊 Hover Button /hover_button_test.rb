@@ -47,15 +47,15 @@ class DemoWindow < Gosu::Window
     # Draw the button text
     @button_font.draw("Click me", 60, 60, ZOrder::MIDDLE, 1.0, 1.0, Gosu::Color::BLACK)
     # Draw the mouse_x position
-    @info_font.draw("mouse_x: #{mouse_x}", 0, 350, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
+    @info_font.draw("mouse_x: #{mouse_x}", 20, 370, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
     # Draw the mouse_y position
-    # @info_font.draw("mouse_y: #{mouse_y}", ......... )
+    @info_font.draw("mouse_y: #{mouse_y}", 20, 380, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
   end
 
   # this is called by Gosu to see if it should show the cursor (or mouse)
   def needs_cursor?; true; end
 
- # This still needs to be fixed!
+  # This still needs to be fixed!
 
   def mouse_over_button(mouse_x, mouse_y)
     if ((mouse_x > 50 and mouse_x < 150) and (mouse_y > 50 and mouse_x < 100))
