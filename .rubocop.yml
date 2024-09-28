@@ -1,10 +1,23 @@
 AllCops:
-  TargetRubyVersion: 3.3.4
+  TargetRubyVersion: 3.3
+  NewCops: enable
 
-Style/MethodDefParentheses:
-  EnforcedStyle: require_parentheses
+Style:
+  MethodDefParentheses:
+    EnforcedStyle: require_parentheses
+  ReturnNil:
+    Enabled: false
 
-Style/Return:
-  Enabled: false
+Metrics:
+  MethodLength:
+    Max: 10
+  ClassLength:
+    Max: 100
+  CyclomaticComplexity:
+    Max: 6
 
-# You can add more cops and their configurations here
+Layout:
+  LineLength:
+    Enabled: false
+  IndentationStyle:
+    EnforcedStyle: tabs
