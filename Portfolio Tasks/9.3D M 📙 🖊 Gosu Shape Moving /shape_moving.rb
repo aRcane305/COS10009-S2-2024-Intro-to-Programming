@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gosu'
 
 module ZOrder
@@ -12,7 +14,7 @@ SHAPE_DIM = 50
 class GameWindow < Gosu::Window
   def initialize
     super(WIDTH, HEIGHT, false)
-    self.caption = "Shape Moving"
+    self.caption = 'Shape Moving'
 
     # initial box draw coordinates
     @shape_y = HEIGHT / 2
@@ -22,21 +24,14 @@ class GameWindow < Gosu::Window
 
   # button presses to box direction
   def update
-    if button_down?(Gosu::KbRight)
-      @shape_x += 3
-    end
+    # simplify the if statments
+    @shape_x += 3 if button_down?(Gosu::KbRight)
 
-    if button_down?(Gosu::KbLeft)
-      @shape_x -= 3
-    end
+    @shape_x -= 3 if button_down?(Gosu::KbLeft)
 
-    if button_down?(Gosu::KbDown)
-      @shape_y += 3
-    end
+    @shape_y += 3 if button_down?(Gosu::KbDown)
 
-    if button_down?(Gosu::KbUp)
-      @shape_y -= 3
-    end
+    @shape_y -= 3 if button_down?(Gosu::KbUp)
 
     # ensure that the box stays within the game window
     @shape_x = [[@shape_x, 0].max, WIDTH - SHAPE_DIM].min
@@ -46,7 +41,7 @@ class GameWindow < Gosu::Window
   # Draw (or Redraw) the window
   # This is procedure i.e the return value is 'undefined'
   def draw
-    Gosu.draw_rect(@shape_x, @shape_y, SHAPE_DIM, SHAPE_DIM, Gosu::Color::RED, ZOrder::TOP, mode=:default)
+    Gosu.draw_rect(@shape_x, @shape_y, SHAPE_DIM, SHAPE_DIM, Gosu::Color::RED, ZOrder::TOP, :default)
     # Draw the shape_x position
     # changed font height from 470 to relative for future codes
     @info_font.draw_text("shape_x: #{@shape_x}", 20, HEIGHT - 30, ZOrder::TOP, 1.0, 1.0, Gosu::Color::WHITE)
@@ -58,4 +53,3 @@ end
 
 window = GameWindow.new
 window.show
-

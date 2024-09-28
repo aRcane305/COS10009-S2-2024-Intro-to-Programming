@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'gosu'
 
@@ -9,7 +11,6 @@ require 'gosu'
 # (i.e it should have a black border around the outside)
 # finally, a user has noticed that in this version also sometimes the
 # button action occurs when you click outside the button area and vice-versa.
-
 
 # FOR THE CREDIT VERSION:
 # display a colored border that 'highlights' the button when the mouse moves over it
@@ -24,52 +25,50 @@ WIN_WIDTH = 640
 WIN_HEIGHT = 400
 
 class DemoWindow < Gosu::Window
-
   # set up variables and attributes
-  def initialize()
+  def initialize
     super(WIN_WIDTH, WIN_HEIGHT, false)
     @background = Gosu::Color::WHITE
     @button_font = Gosu::Font.new(20)
     @info_font = Gosu::Font.new(10)
-    @locs = [60,60]
+    @locs = [60, 60]
   end
-
 
   # Draw the background, the button with 'click me' text and text
   # showing the mouse coordinates
-  def draw()
+  def draw
     # Draw background color
-    Gosu.draw_rect(0, 0, WIN_WIDTH, WIN_HEIGHT, @background, ZOrder::BACKGROUND, mode=:default)
+    Gosu.draw_rect(0, 0, WIN_WIDTH, WIN_HEIGHT, @background, ZOrder::BACKGROUND, :default)
     # Draw the rectangle that provides the background.
     # rectangle only appears when hover, code checks for mouse. cant put this in def mouse_over_button as the drawing happens here
     if mouse_over_button(mouse_x, mouse_y)
       # Draw a grey background for the button when the mouse is over it
       # the rectangle is shifted up 2 units, left 2 units, and extended 4 units each side in order to form the perimeter
-      Gosu.draw_rect(48, 48, 104, 54, Gosu::Color::BLACK, ZOrder::MIDDLE, mode=:default)
+      Gosu.draw_rect(48, 48, 104, 54, Gosu::Color::BLACK, ZOrder::MIDDLE, :default)
     end
     # Draw the button
-    Gosu.draw_rect(50, 50, 100, 50, Gosu::Color::GREEN, ZOrder::TOP, mode=:default)
+    Gosu.draw_rect(50, 50, 100, 50, Gosu::Color::GREEN, ZOrder::TOP, :default)
     # Draw the button text
     # changed to TOP as it was not showing earlier, MIDDLE meant that it was below the button
-    @button_font.draw("Click me", 60, 60, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
+    @button_font.draw_text('Click me', 60, 60, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
     # Draw the mouse_x position
-    @info_font.draw("mouse_x: #{mouse_x}", 20, 370, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
+    @info_font.draw_text("mouse_x: #{mouse_x}", 20, 370, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
     # Draw the mouse_y position
-    @info_font.draw("mouse_y: #{mouse_y}", 20, 380, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
+    @info_font.draw_text("mouse_y: #{mouse_y}", 20, 380, ZOrder::TOP, 1.0, 1.0, Gosu::Color::BLACK)
   end
 
   # this is called by Gosu to see if it should show the cursor (or mouse)
-  def needs_cursor?; true; end
+  def needs_cursor? = true
 
   # This still needs to be fixed!
 
   def mouse_over_button(mouse_x, mouse_y)
     # changed to mouse_y and mouse_y
-    if ((mouse_x > 50 and mouse_x < 150) and (mouse_y > 50 and mouse_y < 100))
-      true
-    else
-      false
-    end
+    # function is true between 50 and 150 for x
+    # function is true between 50 and 150 for y
+    # then function is only true between the two
+    # shorter and neater than an if else statement
+    ((mouse_x > 50) && (mouse_x < 150)) && ((mouse_y > 50) && (mouse_y < 100))
   end
 
   # If the button area (rectangle) has been clicked on change the background color
@@ -79,14 +78,15 @@ class DemoWindow < Gosu::Window
   def button_down(id)
     case id
     when Gosu::MsLeft
-      if mouse_over_button(mouse_x, mouse_y)
-        @background = Gosu::Color::YELLOW
-      else
-        @background = Gosu::Color::WHITE
-      end
+      # neatens up and prevents repetition by bringing background out
+      @background = if mouse_over_button(mouse_x, mouse_y)
+                      Gosu::Color::YELLOW
+                    else
+                      Gosu::Color::WHITE
+                    end
     end
   end
 end
 
 # Lets get started!
-DemoWindow.new.show()
+DemoWindow.new.show

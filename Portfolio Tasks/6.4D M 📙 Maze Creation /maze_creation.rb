@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'gosu'
 
 module ZOrder
@@ -12,7 +14,7 @@ class Cell
   # have a pointer to the neighbouring cells
   attr_accessor :north, :south, :east, :west, :vacant, :visited, :on_path
 
-  def initialize()
+  def initialize
     # Set the pointers to nil
     @north = nil
     @south = nil
@@ -32,13 +34,12 @@ end
 # left to right.  The right click on a cell for the program to find a path
 # through the maze. When a path is found it will be displayed in red.
 class GameWindow < Gosu::Window
-
   # initialize creates a window with a width an a height
   # and a caption. It also sets up any variables to be used.
   # This is procedure i.e the return value is 'undefined'
   def initialize
-    super MAP_WIDTH, MAP_HEIGHT, false
-    self.caption = "Map Creation"
+    super(MAP_WIDTH, MAP_HEIGHT, false)
+    self.caption = 'Map Creation'
     @path = nil
 
     x_cell_count = MAP_WIDTH / CELL_DIM
@@ -48,12 +49,12 @@ class GameWindow < Gosu::Window
     column_index = 0
 
     # first create cells for each position
-    while (column_index < x_cell_count)
+    while column_index < x_cell_count
       row = Array.new(y_cell_count)
       @columns[column_index] = row
       row_index = 0
-      while (row_index < y_cell_count)
-        cell = Cell.new()
+      while row_index < y_cell_count
+        cell = Cell.new
         @columns[column_index][row_index] = cell
         row_index += 1
       end
@@ -64,41 +65,42 @@ class GameWindow < Gosu::Window
     column_index = 0
     # loop through the columns
     # x_cell_count has been defined as 10, we can use this to iterate the loop
-    while (column_index < x_cell_count)
+    while column_index < x_cell_count
       # loop the rows of the column
       row_index = 0
-      while (row_index < y_cell_count)
+      while row_index < y_cell_count
         cell = @columns[column_index][row_index]
         # find north neighbours. all rows except the first one (index 0) have a north neighbour
-        if (row_index > 0)
-          cell.north = 1
-        else
-          cell.north = 0
-        end
+        # more concise way, basically if cell.north is positive (same as larger than 0), its 1, else its 0
+        cell.north = if row_index.positive?
+                       1
+                     else
+                       0
+                     end
         # find east neighbours. all columns except the last one (index 9) have a east neighbour
         # x_cell_count - 1 is better, because in the future if more squares are added it still works
-        if (column_index < (x_cell_count - 1))
-          cell.east = 1
-        else
-          cell.east = 0
-        end
+        cell.east = if column_index < (x_cell_count - 1)
+                      1
+                    else
+                      0
+                    end
         # find south neighbours, all rows except last row (index 9) will have a south neighbour
-        if (row_index < (y_cell_count - 1))
-          cell.south = 1
-        else
-          cell.south = 0
-        end
+        cell.south = if row_index < (y_cell_count - 1)
+                       1
+                     else
+                       0
+                     end
         # find west neighbours, all columns except index 0 will have a west neighbour
-        if (column_index > 0)
-          cell.west = 1
-        else
-          cell.west = 0
-        end
+        cell.west = if column_index.positive?
+                      1
+                    else
+                      0
+                    end
         # iterate to print into terminal by columns
-        puts("Cell x: " + column_index.to_s + ", y: " + row_index.to_s + " north: " + cell.north.to_s + " south: " + cell.south.to_s + " east: " + cell.east.to_s + " west: " + cell.west.to_s)
+        puts("Cell x: #{column_index}, y: #{row_index} north: #{cell.north} south: #{cell.south} east: #{cell.east} west: #{cell.west}")
         row_index += 1
       end
-      puts("---------- End of Column ----------")
+      puts('---------- End of Column ----------')
       column_index += 1
     end
   end
@@ -110,17 +112,17 @@ class GameWindow < Gosu::Window
 
   # Returns an array of the cell x and y coordinates that were clicked on
   def mouse_over_cell(mouse_x, mouse_y)
-    if mouse_x <= CELL_DIM
-      cell_x = 0
-    else
-      cell_x = (mouse_x / CELL_DIM).to_i
-    end
+    cell_x = if mouse_x <= CELL_DIM
+               0
+             else
+               (mouse_x / CELL_DIM).to_i
+             end
 
-    if mouse_y <= CELL_DIM
-      cell_y = 0
-    else
-      cell_y = (mouse_y / CELL_DIM).to_i
-    end
+    cell_y = if mouse_y <= CELL_DIM
+               0
+             else
+               (mouse_y / CELL_DIM).to_i
+             end
 
     [cell_x, cell_y]
   end

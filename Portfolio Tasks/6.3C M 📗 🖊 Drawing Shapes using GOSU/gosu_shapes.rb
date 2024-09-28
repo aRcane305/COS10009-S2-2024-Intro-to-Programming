@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rubygems'
 require 'gosu'
-require_relative './circle' # require by itself doesn't work on Rubymine because I have multiple folders and files.
+require_relative 'circle' # require by itself doesn't work on Rubymine because I have multiple folders and files.
 
 # The screen has layers: Background, Monitor, Ruby Background, Ruby Logo, Top
 module ZOrder
@@ -24,8 +26,8 @@ class DemoWindow < Gosu::Window
     Gosu.draw_rect(380, 527, 180, 45, 0xff_232525, ZOrder::MONITOR)
     draw_triangle(380, 616, 0xff_232525, 380, 527, 0xff_232525, 440, 527, 0xff_232525, ZOrder::MONITOR)
     draw_triangle(380, 616, 0xff_232525, 380, 527, 0xff_232525, 320, 616, 0xff_232525, ZOrder::MONITOR)
-    draw_triangle(560 ,616, 0xff_232525, 560, 527, 0xff_232525, 500, 527, 0xff_232525, ZOrder::MONITOR)
-    draw_triangle(560 ,616, 0xff_232525, 560, 527, 0xff_232525, 620, 616, 0xff_232525, ZOrder::MONITOR)
+    draw_triangle(560, 616, 0xff_232525, 560, 527, 0xff_232525, 500, 527, 0xff_232525, ZOrder::MONITOR)
+    draw_triangle(560, 616, 0xff_232525, 560, 527, 0xff_232525, 620, 616, 0xff_232525, ZOrder::MONITOR)
     # monitor base vertical support
     Gosu.draw_rect(440, 497, 60, 70, 0xff_242727, ZOrder::MONITOR)
     # computer case
@@ -45,7 +47,7 @@ class DemoWindow < Gosu::Window
     # case button
     Gosu.draw_rect(1106, 265, 34, 10, 0xff_111010, ZOrder::TOP)
     # case button led
-    Gosu.draw_rect(1114, 269 ,20 , 2, Gosu::Color::WHITE, ZOrder::TOP)
+    Gosu.draw_rect(1114, 269, 20, 2, Gosu::Color::WHITE, ZOrder::TOP)
     # ruby top right background triangle
     draw_triangle(810, 113, 0xff_8511fa, 280, 113, 0xff_8511fa, 810, 300, 0xff_8511fa, ZOrder::RUBYBACKGROUND)
     # ruby bottom left background triangle
@@ -59,8 +61,6 @@ class DemoWindow < Gosu::Window
     img2 = Gosu::Image.new(Circle.new(50))
     img2.draw(385, 220, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
     img2.draw(485, 220, ZOrder::RUBYLOGO, 0.6, 0.6, Gosu::Color::WHITE)
-
-
   end
 end
 

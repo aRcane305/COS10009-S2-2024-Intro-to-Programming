@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Complete the three missing lines of code below
 
 def main
