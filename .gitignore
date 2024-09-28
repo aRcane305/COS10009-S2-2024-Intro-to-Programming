@@ -2,3 +2,5 @@ gemfile
 gemfile.lock
 .idea/
 .DS_Store
+.cmake-build-debug
+.CmakeLists.txt
