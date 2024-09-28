@@ -9,6 +9,7 @@ SHAPE_DIM = 50
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 done = False
 is_blue = True
+
 # intial box location
 x = SCREEN_HEIGHT / 2
 y = SCREEN_WIDTH / 2
