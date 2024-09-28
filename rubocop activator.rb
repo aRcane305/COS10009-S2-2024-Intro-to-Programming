@@ -1,7 +1,7 @@
 require 'fileutils'
 
 # The file you want to run Rubocop on
-original_file = '/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/Portfolio Tasks/9.3D M 📙 🖊 Gosu Shape Moving /shape_moving.rb'
+original_file = '/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/Portfolio Tasks/Test 1/car.rb'
 
 # Step 1: Generate the corrected file name by adding "_corrected" before the extension
 corrected_file = original_file.sub(/(\.rb)$/, '_corrected\1')
