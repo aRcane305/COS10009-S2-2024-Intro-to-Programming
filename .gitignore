@@ -1,5 +1,4 @@
 gemfile
 gemfile.lock
 .idea/
-.rubocop.yml
 .DS_Store
