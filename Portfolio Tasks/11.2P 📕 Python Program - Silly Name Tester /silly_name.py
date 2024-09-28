@@ -5,20 +5,19 @@
 # then print ' name.'
 
 def print_silly_name(name):
-    # complete this
+   print(name + " is a")
+   index = 0
    while (index < 60):
-        # 
+        print("silly ", end='')
         index += 1
-    print("name!")
+   print("name!")
 
 def main():
     name = input("What is your name?\n")
-    if (name == "Ted") or (name == "Fred"):
+    if (name == "Silas") or (name == "Saad"):
         print(name + " is an awesome name!")
     else: # replace the code below with a call to print_silly_name()
-        print(f"{name} is a ", end='') # f allows {name}
-        print("silly ", end='')  # end='' has no newline char
-        print("name")  
+        print_silly_name(name)
     return
 
 main()
