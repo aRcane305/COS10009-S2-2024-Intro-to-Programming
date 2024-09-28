@@ -14,27 +14,27 @@ class GameWindow < Gosu::Window
     super(WIDTH, HEIGHT, false)
     self.caption = "Shape Moving"
 
+    # initial box draw coordinates
     @shape_y = HEIGHT / 2
     @shape_x = WIDTH / 2
     @info_font = Gosu::Font.new(10)
   end
 
-  # Put any work you want done in update
-  # This is a procedure i.e the return value is 'undefined'
+  # button presses to box direction
   def update
-    if button_down?(Gosu::KbRight) && (@shape_x + SHAPE_DIM < WIDTH)
+    if button_down?(Gosu::KbRight)
       @shape_x += 3
     end
 
-    if button_down?(Gosu::KbLeft) && (@shape_x > 0)
+    if button_down?(Gosu::KbLeft)
       @shape_x -= 3
     end
 
-    if button_down?(Gosu::KbDown) && (@shape_y + SHAPE_DIM < HEIGHT)
+    if button_down?(Gosu::KbDown)
       @shape_y += 3
     end
 
-    if button_down?(Gosu::KbUp) && (@shape_y > 0)
+    if button_down?(Gosu::KbUp)
       @shape_y -= 3
     end
 
