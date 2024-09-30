@@ -3,7 +3,8 @@ class MyRecord
     attr_accessor :name, :age
     def initialize(name, age)
       @name = name
-      @ag = age
+      # fixed typing error
+      @age = age
     end
 end
 
@@ -48,7 +49,8 @@ def read(aFile)
   # Defensive programming:
   count = aFile.gets
   puts("first line: #{count}")
-  if (is_numeric(count))
+  # fixed to call the correct function
+  if (is_numeric?(count))
     count = count.to_i
   else
     count = 0
@@ -56,7 +58,8 @@ def read(aFile)
   end
 
   index = 0
-  while (count < index)
+  # count should be larger than index
+  while (count > index)
     name = aFile.gets
     age = aFile.gets.to_i
     record = MyRecord.new(name, age)
@@ -78,7 +81,8 @@ end
 
 # Write data to a file then read it in and print it out
 def main
-  aFile = File.new("data.txt", "r") # open for writing
+  file_name = File.join(__dir__, "data.txt")
+  aFile = File.open(file_name, "r") # open for writing
   people = read(aFile)
   aFile.close
 

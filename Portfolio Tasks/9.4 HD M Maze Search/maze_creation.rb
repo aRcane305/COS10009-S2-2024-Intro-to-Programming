@@ -29,7 +29,6 @@ class Cell
   end
 end
 
-# Instructions:
 # Left click on cells to create a maze with at least one path moving from
 # left to right.  The right click on a cell for the program to find a path
 # through the maze. When a path is found it will be displayed in red.
@@ -130,12 +129,6 @@ class GameWindow < Gosu::Window
   # start a recursive search for paths from the selected cell
   # it searches till it hits the East 'wall' then stops
   # it does not necessarily find the shortest path
-
-  # Completing this function is NOT NECESSARY for the Maze Creation task
-  # complete the following for the Maze Search task - after
-  # we cover Recusion in the lectures.
-
-  # But you DO need to complete it later for the Maze Search task
   def search(cell_x ,cell_y)
 
     dead_end = false
@@ -157,11 +150,11 @@ class GameWindow < Gosu::Window
         puts "Searching. In cell x: " + cell_x.to_s + " y: " + cell_y.to_s
       end
 
-      # INSERT MISSING CODE HERE!! You need to have 4 'if' tests to
-      # check each surrounding cell. Make use of the attributes for
-      # cells such as vacant, visited and on_path.
-      # Cells on the outer boundaries will always have a nil on the
-      # boundary side
+      # use vacant, visited and on_path as attributes
+      # we access columns array as defined in row 48
+      if @columns[cell_x][cell_y].north != nil
+        if @columns[cell_x][cell_y].north.vacant && !@columns[cell_x][cell_y].north.visited
+      end
 
       # pick one of the possible paths that is not nil (if any):
       if (north_path != nil)
@@ -194,28 +187,28 @@ class GameWindow < Gosu::Window
   # Right button starts a path search from the clicked cell
   def button_down(id)
     case id
-      when Gosu::MsLeft
-        cell = mouse_over_cell(mouse_x, mouse_y)
-        if (ARGV.length > 0) # debug
-          puts("Cell clicked on is x: " + cell[0].to_s + " y: " + cell[1].to_s)
-        end
-        @columns[cell[0]][cell[1]].vacant = true
-      when Gosu::MsRight
-        cell = mouse_over_cell(mouse_x, mouse_y)
-        @path = search(cell[0],cell[1])
+    when Gosu::MsLeft
+      cell = mouse_over_cell(mouse_x, mouse_y)
+      if (ARGV.length > 0) # debug
+        puts("Cell clicked on is x: " + cell[0].to_s + " y: " + cell[1].to_s)
       end
+      @columns[cell[0]][cell[1]].vacant = true
+    when Gosu::MsRight
+      cell = mouse_over_cell(mouse_x, mouse_y)
+      @path = search(cell[0],cell[1])
+    end
   end
 
   # This will walk along the path setting the on_path for each cell
   # to true. Then draw checks this and displays them a red colour.
   def walk(path)
-      index = path.length
-      count = 0
-      while (count < index)
-        cell = path[count]
-        @columns[cell[0]][cell[1]].on_path = true
-        count += 1
-      end
+    index = path.length
+    count = 0
+    while (count < index)
+      cell = path[count]
+      @columns[cell[0]][cell[1]].on_path = true
+      count += 1
+    end
   end
 
   # Put any work you want done in update

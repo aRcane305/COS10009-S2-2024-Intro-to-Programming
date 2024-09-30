@@ -18,6 +18,7 @@ Metrics:
 
 Layout:
   LineLength:
-    Enabled: false
+    Max: 80
+    EnforcedStyle: keep_lines_under
   IndentationStyle:
     EnforcedStyle: tabs
