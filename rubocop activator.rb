@@ -6,21 +6,16 @@ original_file = '/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Progra
 # Step 1: Generate the corrected file name by adding "_corrected" before the extension
 corrected_file = original_file.sub(/(\.rb)$/, '_corrected\1')
 
+# Path to your custom .rubocop.yml file
+config_file = '/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/.rubocop.yml'
+
 # Check if the file exists before running Rubocop
 if File.exist?(original_file)
-  # Step 2: Run Rubocop's auto-correct
-  system("rubocop -A '#{original_file}'")
-
-  # Step 3: Copy the corrected file to the new file
+  # Step 2: Copy the original file to the corrected file
   FileUtils.cp(original_file, corrected_file)
 
-  # Step 4: Restore the original file (if it's inside the Git repo)
-  git_restore_status = system("git ls-files --error-unmatch '#{original_file}' > /dev/null 2>&1")
-  if git_restore_status
-    system("git checkout -- '#{original_file}'")
-  else
-    puts "File is not tracked by Git. No restore possible."
-  end
+  # Step 3: Run Rubocop's auto-correct on the corrected file with the specific config file
+  system("rubocop -A '#{corrected_file}' --config '#{config_file}'")
 
   puts "Auto-corrected version saved to #{corrected_file}"
 else

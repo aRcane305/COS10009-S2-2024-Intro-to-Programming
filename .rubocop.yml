@@ -21,15 +21,20 @@ Style:
     EnforcedStyle: double_quotes
   SymbolProc:
     Enabled: true
-  While:
-    Enabled: true
-  Case:
-    Enabled: true
-  EachForSimpleLoop:
-    Enabled: true
+  CollectionMethods:
+    PreferredMethods:
+      each: for
+      map: for
+      find: detect
+      reduce: inject
+      select: find_all
   For:
     Enabled: false
-  Do:
+  While:
+    Enabled: false
+  Until:
+    Enabled: false
+  Loop:
     Enabled: false
 
 Layout:
@@ -78,10 +83,10 @@ Lint:
     Enabled: true
   UnusedBlockArgument:
     Enabled: true
-    UnusedMethodArgument:
-      Enabled: true
-    UselessAssignment:
-      Enabled: true
+  UnusedMethodArgument:
+    Enabled: true
+  UselessAssignment:
+    Enabled: true
 
 Security:
   Eval:
