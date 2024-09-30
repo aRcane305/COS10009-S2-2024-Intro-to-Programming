@@ -1,20 +1,36 @@
+require:
+  - rubocop-performance
+
 AllCops:
-  TargetRubyVersion: 3.3
+  TargetRubyVersion: 3.3.4
   NewCops: enable
 
+Performance:
+  Enabled: true
+
 Style:
+  Documentation:
+    Enabled: true
+  MethodCallWithoutArgsParentheses:
+    Enabled: true
   MethodDefParentheses:
     EnforcedStyle: require_parentheses
-  ReturnNil:
+  RedundantReturn:
+    Enabled: true
+  StringLiterals:
+    EnforcedStyle: double_quotes
+  SymbolProc:
+    Enabled: true
+  While:
+    Enabled: true
+  Case:
+    Enabled: true
+  EachForSimpleLoop:
+    Enabled: true
+  For:
     Enabled: false
-
-Metrics:
-  MethodLength:
-    Max: 10
-  ClassLength:
-    Max: 100
-  CyclomaticComplexity:
-    Max: 6
+  Do:
+    Enabled: false
 
 Layout:
   LineLength:
@@ -22,3 +38,59 @@ Layout:
     EnforcedStyle: keep_lines_under
   IndentationStyle:
     EnforcedStyle: tabs
+
+Metrics:
+  AbcSize:
+    Max: 20
+  BlockLength:
+    Max: 25
+  ClassLength:
+    Max: 100
+  CyclomaticComplexity:
+    Max: 6
+  MethodLength:
+    Max: 10
+
+Lint:
+  AssignmentInCondition:
+    Enabled: true
+  BooleanSymbol:
+    Enabled: true
+  ConstantResolution:
+    Enabled: true
+  DuplicateBranch:
+    Enabled: true
+  DuplicateHashKey:
+    Enabled: true
+  EmptyConditionalBody:
+    Enabled: true
+  EmptyExpression:
+    Enabled: true
+  LiteralInInterpolation:
+    Enabled: true
+  NonLocalExitFromIterator:
+    Enabled: true
+  RescueWithoutErrorClass:
+    Enabled: true
+  ShadowedArgument:
+    Enabled: true
+  ShadowingOuterLocalVariable:
+    Enabled: true
+  UnusedBlockArgument:
+    Enabled: true
+    UnusedMethodArgument:
+      Enabled: true
+    UselessAssignment:
+      Enabled: true
+
+Security:
+  Eval:
+    Enabled: true
+  JSONLoad:
+    Enabled: true
+  MarshalLoad:
+    Enabled: true
+  Open:
+    Enabled: true
+  YAMLLoad:
+    Enabled: true
