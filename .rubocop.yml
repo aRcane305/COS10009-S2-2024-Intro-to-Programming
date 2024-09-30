@@ -1,101 +1,34 @@
-require:
-  - rubocop-performance
-
 AllCops:
   TargetRubyVersion: 3.3.4
   NewCops: enable
 
-Performance:
-  Enabled: true
-
 Style:
-  Documentation:
-    Enabled: true
-  MethodCallWithoutArgsParentheses:
-    Enabled: true
+  Documentation: true
   MethodDefParentheses:
     EnforcedStyle: require_parentheses
-  RedundantReturn:
-    Enabled: true
   StringLiterals:
     EnforcedStyle: double_quotes
-  SymbolProc:
-    Enabled: true
-  CollectionMethods:
-    PreferredMethods:
-      each: for
-      map: for
-      find: detect
-      reduce: inject
-      select: find_all
-  For:
-    Enabled: false
-  While:
-    Enabled: false
-  Until:
-    Enabled: false
-  Loop:
-    Enabled: false
 
 Layout:
   LineLength:
     Max: 80
     EnforcedStyle: keep_lines_under
-  IndentationStyle:
-    EnforcedStyle: tabs
 
 Metrics:
-  AbcSize:
-    Max: 20
+  MethodLength:
+    Max: 10
   BlockLength:
     Max: 25
   ClassLength:
     Max: 100
-  CyclomaticComplexity:
-    Max: 6
-  MethodLength:
-    Max: 10
 
 Lint:
-  AssignmentInCondition:
-    Enabled: true
-  BooleanSymbol:
-    Enabled: true
-  ConstantResolution:
-    Enabled: true
-  DuplicateBranch:
-    Enabled: true
-  DuplicateHashKey:
-    Enabled: true
-  EmptyConditionalBody:
-    Enabled: true
-  EmptyExpression:
-    Enabled: true
-  LiteralInInterpolation:
-    Enabled: true
-  NonLocalExitFromIterator:
-    Enabled: true
-  RescueWithoutErrorClass:
-    Enabled: true
-  ShadowedArgument:
-    Enabled: true
-  ShadowingOuterLocalVariable:
-    Enabled: true
-  UnusedBlockArgument:
-    Enabled: true
-  UnusedMethodArgument:
-    Enabled: true
-  UselessAssignment:
-    Enabled: true
+  AssignmentInCondition: true
+  NonLocalExitFromIterator: true
+  LiteralInInterpolation: true
+  UnusedBlockArgument: true
+  UnusedMethodArgument: true
+  UselessAssignment: true
 
 Security:
-  Eval:
-    Enabled: true
-  JSONLoad:
-    Enabled: true
-  MarshalLoad:
-    Enabled: true
-  Open:
-    Enabled: true
-  YAMLLoad:
-    Enabled: true
+  Eval: true
