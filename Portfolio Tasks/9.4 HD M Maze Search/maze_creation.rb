@@ -152,9 +152,7 @@ class GameWindow < Gosu::Window
 
       # use vacant, visited and on_path as attributes
       # we access columns array as defined in row 48
-      if @columns[cell_x][cell_y].north != nil
-        if @columns[cell_x][cell_y].north.vacant && !@columns[cell_x][cell_y].north.visited
-      end
+
 
       # pick one of the possible paths that is not nil (if any):
       if (north_path != nil)
