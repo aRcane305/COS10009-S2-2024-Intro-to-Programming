@@ -6,7 +6,6 @@ gem 'byebug'
 gem 'gosu'
 gem 'rubocop'
 gem 'solargraph'
-gem 'tk'
 
 # Suggested additional gems
 gem 'rspec'           # Testing framework
