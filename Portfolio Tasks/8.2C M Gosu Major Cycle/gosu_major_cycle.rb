@@ -21,7 +21,7 @@ class GameWindow < Gosu::Window
     self.caption = 'Gosu Cycle Example'
 
     # Create and load an image to display
-    @background_image = Gosu::Image.new('/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/Portfolio Tasks/8.2C M 📗 🖊 Gosu Major Cycle /media/earth.png')
+    @background_image = Gosu::Image.new('/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/Portfolio Tasks/8.2C M Gosu Major Cycle/media/earth.png')
 
     # Create and load a font for drawing text on the screen
     @font = Gosu::Font.new(20)
