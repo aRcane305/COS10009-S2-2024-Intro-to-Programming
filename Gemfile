@@ -18,3 +18,4 @@ gem 'rubocop-performance', require: false, group: :development  # Performance co
 
 # File handling
 gem 'fileutils'
+gem 'dir'

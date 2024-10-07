@@ -1,18 +1,13 @@
 require 'rubygems'
 require 'gosu'
+require_relative 'album_loading'
+require_relative 'album'
+require_relative 'track'
+require_relative 'genre'
+require_relative 'z0rder'
 
 TOP_COLOR = Gosu::Color.new(0xFF1EB1FA)
 BOTTOM_COLOR = Gosu::Color.new(0xFF1D4DB5)
-
-module ZOrder
-  BACKGROUND, PLAYER, UI = *0..2
-end
-
-module Genre
-  POP, CLASSIC, JAZZ, ROCK = *1..4
-end
-
-GENRE_NAMES = ['Null', 'Pop', 'Classic', 'Jazz', 'Rock']
 
 class ArtWork
 	attr_accessor :bmp
@@ -27,7 +22,7 @@ end
 class MusicPlayerMain < Gosu::Window
 
 	def initialize
-	    super 600, 800
+	    super 1280, 720, false
 	    self.caption = "Music Player"
 
 		# Reads in an array of albums from a file and then prints all the albums in the
@@ -35,6 +30,8 @@ class MusicPlayerMain < Gosu::Window
 	end
 
   # Put in your code here to load albums and tracks
+
+	read_in_albums
 
   # Draws the artwork on the screen for all the albums
 

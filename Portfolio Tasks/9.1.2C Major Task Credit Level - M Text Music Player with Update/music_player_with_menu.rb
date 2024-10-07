@@ -227,6 +227,7 @@ def add_album
 
   @albums << Album.new(album_artist, album_title, album_label, album_genre, @tracks)
 
+  # usually an array will output the last stored variable, however with the arg album_title, we need to use last or it will output errors
   puts "Album added, '#{@albums.last.album_title}'. Press enter to continue."
   gets
 end
