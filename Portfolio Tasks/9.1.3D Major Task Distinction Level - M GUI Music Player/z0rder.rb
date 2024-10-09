@@ -1,3 +1,0 @@
-module ZOrder
-  BACKGROUND, PLAYER, UI_BACKGROUND, UI = *0..3
-end

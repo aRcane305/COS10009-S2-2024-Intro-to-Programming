@@ -23,7 +23,7 @@ def find_album_information
   file_path = File.join(__dir__, "#{album_information.downcase}.txt")
   if File.exist?(file_path)
     # debug
-    puts 'reading file'
+    puts 'Debug: reading file'
     File.read(file_path)
   else
     puts "File not found: #{album_information}.txt , please try again."

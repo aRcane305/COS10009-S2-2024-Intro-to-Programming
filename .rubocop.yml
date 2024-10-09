@@ -12,7 +12,6 @@ Style:
 Layout:
   LineLength:
     Max: 80
-    EnforcedStyle: keep_lines_under
 
 Metrics:
   MethodLength:
