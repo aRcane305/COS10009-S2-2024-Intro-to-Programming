@@ -9,11 +9,19 @@ class StudentTest < Minitest::Test
   end
 
 # insert a test here for the finding the correct student for id 300
+  def test_student_name_for_id_300
+    assert_equal 'Jill', get_student_name_for_id(300)
+  end
 
 # insert a test here for returning "Not Found" for student with id 800
+  def test_student_name_for_nonexistent_id
+    assert_equal "Not Found", get_student_name_for_id(800)
+  end
 
 # insert a test here for finding the correct student name for array position 0
-
+  def test_student_name_for_array_position_0
+    assert_equal "Fred", get_student_name(0)
+  end
 
 end
 

@@ -16,17 +16,21 @@ def read_in_albums
 end
 
 def find_album_information
-  # prompts user for the file name
-  album_information = read_string('Please enter the name of the file: ')
-  # check if the file exists in directory
-  # downcase allows for case insensitivity
-  file_path = File.join(__dir__, "#{album_information.downcase}.txt")
-  if File.exist?(file_path)
-    # debug
-    puts 'reading file'
-    File.read(file_path)
-  else
-    puts "File not found: #{album_information}.txt , please try again."
+  finished = false
+  until finished
+    # prompts user for the file name
+    album_information = read_string('Please enter the name of the file: ')
+    # check if the file exists in directory
+    # downcase allows for case insensitivity
+    file_path = File.join(__dir__, "#{album_information.downcase}.txt")
+    if File.exist?(file_path)
+      # debug
+      puts 'Debug: reading file'
+      File.read(file_path)
+      finished = true
+    else
+      puts "File not found: #{album_information}.txt , please try again."
+    end
   end
   file_path
 end
@@ -34,7 +38,7 @@ end
 # load a single track from the album file
 def load_track(album_file)
   # debug
-  puts 'loading track'
+  puts 'Debug: loading track'
   track_name = album_file.gets
   track_location = album_file.gets
   track_duration = album_file.gets
@@ -44,7 +48,7 @@ end
 # loads an array of tracks from the album file
 def load_tracks(album_file)
   # debug
-  puts 'loading tracks'
+  puts 'Debug: loading tracks'
   # using @ makes it an instance variable, so it can be used in other functions
   @tracks = []
   count = album_file.gets.to_i
@@ -64,7 +68,7 @@ end
 # load an album from the album file
 def load_album(album_file)
   # debug
-  puts 'loading album'
+  puts 'Debug: loading album'
   album_artist = album_file.gets
   album_name = album_file.gets
   album_duration = album_file.gets
@@ -77,7 +81,7 @@ end
 # load an array of albums from the album file
 def load_albums(album_file)
   # debug
-  puts 'loading albums'
+  puts 'Debug: loading albums'
   @albums = []
   count = album_file.gets.to_i
   index = 0
@@ -160,6 +164,7 @@ end
 # initiates play album menu
 def play_album
   # takes user input and subtracts 1 to match array indices
+  display_all_albums
   album_index = read_integer('Please enter album number: ') - 1
   # checks if integer is 0 or above
   # checks if its smaller than the length of the album array, in order for loops to work

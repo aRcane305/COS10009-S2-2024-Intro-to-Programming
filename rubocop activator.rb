@@ -1,7 +1,7 @@
 require 'fileutils'
 
 # The file you want to run RuboCop on
-original_file = '/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/Portfolio Tasks/9.1.3D Major Task Distinction Level - M GUI Music Player/gui_music_player.rb'
+original_file = '/Users/arcane/RubymineProjects/COS10009-S2-2024-Intro-to-Programming/Portfolio_Tasks/9.1.1P Major Task Pass Level - M Text Music Player/music_player_with_menu.rb'
 
 # Step 1: Generate the corrected file name by adding "_corrected" before the extension
 corrected_file = original_file.sub(/(\.rb)$/, '_corrected\1')

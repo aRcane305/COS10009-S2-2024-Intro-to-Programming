@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def display_loaded_albums
-  puts 'Loaded Albums:'
+  puts 'Debug: Loaded Albums:'
   index = 0
   while index < @albums.length
     album = @albums[index]
