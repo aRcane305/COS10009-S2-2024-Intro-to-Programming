@@ -1,10 +1,34 @@
 # frozen_string_literal: true
 
 require_relative 'input_functions'
-# class and module files
-require_relative 'track'
-require_relative 'album'
-require_relative 'genre'
+
+class Album
+  attr_accessor :album_artist, :album_title, :album_record_label, :album_genre, :album_tracks
+
+  def initialize(album_artist, album_title, album_record_label, album_genre, album_tracks)
+    @album_artist = album_artist
+    @album_title = album_title
+    @album_record_label = album_record_label
+    @album_genre = album_genre
+    @album_tracks = album_tracks
+  end
+end
+
+class Track
+  attr_accessor :track_name, :track_location, :track_duration
+
+  def initialize(track_name, track_location, track_duration)
+    @track_name = track_name
+    @track_location = track_location
+    @track_duration = track_duration
+  end
+end
+
+module Genre
+  POP, CLASSIC, JAZZ, ROCK = *1..4
+end
+
+$genre_names = %w[Null Pop Classic Jazz Rock]
 
 # points the functions towards the file directory
 # opens the file for reading
@@ -12,7 +36,8 @@ def read_in_albums
   # read in the album information from chosen file
   file_path = find_album_information
   album_file = File.new(file_path, 'r')
-  load_albums(album_file)
+  total_albums = album_count(album_file)
+  load_albums(album_file, total_albums)
 end
 
 def find_album_information
@@ -35,13 +60,17 @@ def find_album_information
   file_path
 end
 
+def album_count(album_file)
+  album_file.gets.to_i
+end
+
 # load a single track from the album file
 def load_track(album_file)
   # debug
   puts 'Debug: loading track'
-  track_name = album_file.gets
-  track_location = album_file.gets
-  track_duration = album_file.gets
+  track_name = album_file.gets.chomp
+  track_location = album_file.gets.chomp
+  track_duration = album_file.gets.chomp
   Track.new(track_name, track_location, track_duration)
 end
 
@@ -50,54 +79,53 @@ def load_tracks(album_file)
   # debug
   puts 'Debug: loading tracks'
   # using @ makes it an instance variable, so it can be used in other functions
-  @tracks = []
+  tracks = []
   count = album_file.gets.to_i
   # debug
   puts "Debug: count = #{count}"
   index = 0
   while index < count
     track = load_track(album_file)
-    @tracks[index] = track
+    tracks[index] = track
     index += 1
   end
   # debug
-  puts "Debug: #{@tracks.inspect}"
-  @tracks
+  puts "Debug: #{tracks.inspect}"
+  tracks
 end
 
 # load an album from the album file
 def load_album(album_file)
   # debug
   puts 'Debug: loading album'
-  album_artist = album_file.gets
-  album_name = album_file.gets
-  album_duration = album_file.gets
-  album_genre = album_file.gets.to_i
+  album_artist = album_file.gets.chomp
+  album_name = album_file.gets.chomp
+  album_duration = album_file.gets.chomp
+  album_genre = album_file.gets.chomp.to_i
   album_tracks = load_tracks(album_file)
   # stores the variables in the class
   Album.new(album_artist, album_name, album_duration, album_genre, album_tracks)
 end
 
 # load an array of albums from the album file
-def load_albums(album_file)
+def load_albums(album_file, total_albums)
   # debug
   puts 'Debug: loading albums'
-  @albums = []
-  count = album_file.gets.to_i
+  albums = []
   index = 0
-  while index < count
+  while index < total_albums
     album = load_album(album_file)
-    @albums[index] = album
+    albums[index] = album
     index += 1
   end
-  @albums
+  albums
 end
 
 # display albums menu selector
-def display_albums
+def display_albums(albums)
   # debug to check albums array
   # this will happen if the user forgets to read in files and jumps to option 2
-  if @albums.nil? || @albums.empty?
+  if albums.length == 0
     puts 'No albums loaded. Please read in albums and try again.'
     return
   end
@@ -111,9 +139,9 @@ def display_albums
     choice = read_integer_in_range('Please enter your choice:', 1, 3)
     case choice
     when 1
-      display_all_albums
+      display_all_albums(albums)
     when 2
-      display_albums_by_genre
+      display_albums_by_genre(albums)
     when 3
       finished = true
     end
@@ -121,56 +149,62 @@ def display_albums
 end
 
 # display all albums
-def display_all_albums
+def display_all_albums(albums)
   puts 'All Albums:'
   index = 0
-  while index < @albums.length
-    album = @albums[index]
+  while index < albums.length
+    album = albums[index]
     # strip is needed, as items in the array are read in using gets,
     # there are \n after each gets and so ,Name would be printed in a new line
     # strip chomps down after the input
     # using gets.chomp in the loading phase is also an option
-    puts "Album #{index + 1} - Artist: #{album.album_artist.strip}, Name: #{album.album_title.strip}, Label: #{album.album_label.strip}"
+    puts "Album #{index + 1} - Artist: #{album.album_artist}, Name: #{album.album_title}, Label: #{album.album_record_label}"
     index += 1
   end
 end
 
 # Display only the genres used by the loaded albums
-def display_albums_by_genre
-  # Extract the genres of the albums that have been loaded
-  # map creates an array from an existing array
-  # uniq removes duplicate values e.g. some albums have the same genre
-  used_genres = @albums.map(&:album_genre).uniq
-
-  puts 'Albums by Genre:'
+def display_albums_by_genre(albums)
+  display_all_genres
+  genre = read_integer_in_range('Please enter your choice:', 1, 4)
   index = 0
-  while index < used_genres.length
-    # $genre_names is an array in the module genre.rb
-    # basically an array in an array
-    puts $genre_names[used_genres[index]]
+  count = 0
+  album_count = albums.length
+  while index < album_count
+    album = albums[index]
+    # Check the genre of each album, using == for comparison
+    if album.album_genre == genre
+      puts "Album #{index + 1} - Artist: #{album.album_artist}, Name: #{album.album_title}, Label: #{album.album_record_label}"
+      count += 1
+    end
     index += 1
+  end
+  if count > 0
+    puts "#{count} Album(s) found."
+  else
+    puts 'No albums found.'
   end
 end
 
 def display_all_genres
-  puts 'Display All Genres:'
+  puts 'All Genres:'
   index = 1
-  while index < $genre_names.length
-    puts $genre_names[index]
+  count = 4
+  while index <= count
+    puts "#{index}. #{$genre_names[index]}"
     index += 1
   end
 end
 
 # initiates play album menu
-def play_album
+def play_album(albums)
   # takes user input and subtracts 1 to match array indices
-  display_all_albums
   album_index = read_integer('Please enter album number: ') - 1
   # checks if integer is 0 or above
   # checks if its smaller than the length of the album array, in order for loops to work
-  return unless album_index >= 0 && album_index < @albums.length
+  return unless album_index >= 0 && album_index < albums.length
 
-  album = @albums[album_index]
+  album = albums[album_index]
   puts "Showing album: #{album.album_title}"
   puts 'Tracklist:'
   print_tracks(album.album_tracks)
@@ -198,46 +232,47 @@ def print_track(track, track_number)
 end
 
 def play_track(album)
-  track_number = read_integer('Please enter track number to play: ')
+  track_number = read_integer('Please enter track number to play: ') - 1
   return unless album.album_tracks.length.positive?
   return unless track_number >= 1 && track_number <= album.album_tracks.length
 
-  track = album.album_tracks[track_number - 1]
-  puts "Now playing: #{track.track_name.strip} from #{album.album_title.strip}"
+  track = album.album_tracks[track_number]
+  puts "Now playing: #{track.track_name} from #{album.album_title}"
   puts "Duration: #{track.track_duration}"
   sleep 10
 end
 
-def add_album
+def add_album(albums)
   # debug
-  puts 'adding album'
+  puts 'Debug: adding album'
   album_artist = read_string('Please enter your album artist: ')
   album_title = read_string('Please enter your album title: ')
-  album_label = read_string('Please enter your album label: ')
+  album_record_label = read_string('Please enter your album label: ')
   display_all_genres
   album_genre = read_integer('Please enter the number of your album genre: ')
 
   album_track_count = read_integer('Please enter the number of tracks: ')
 
-  @tracks = []
+  tracks = []
   index = 0
   while index < album_track_count
     track_name = read_string('Please enter your track name: ')
     track_location = read_string('Please enter your track location: ')
     track_duration = read_string('Please enter your track duration: ')
 
-    @tracks[index] = Track.new(track_name, track_location, track_duration)
+    tracks[index] = Track.new(track_name, track_location, track_duration)
     index += 1
   end
 
-  @albums << Album.new(album_artist, album_title, album_label, album_genre, @tracks)
+  albums << Album.new(album_artist, album_title, album_record_label, album_genre, tracks)
 
   # usually an array will output the last stored variable, however with the arg album_title, we need to use last or it will output errors
-  puts "Album added, '#{@albums.last.album_title}'. Press enter to continue."
+  puts "Album added, '#{albums.last.album_title}'. Press enter to continue."
   gets
 end
 
 def main_menu
+  albums = []
   finished = false
   until finished
     puts 'Main Menu:'
@@ -249,13 +284,13 @@ def main_menu
     choice = read_integer_in_range('Please enter your choice:', 1, 5)
     case choice
     when 1
-      read_in_albums
+      albums = read_in_albums
     when 2
-      display_albums
+      display_albums(albums)
     when 3
-      play_album
+      play_album(albums)
     when 4
-      add_album
+      add_album(albums)
     when 5
       finished = true
     else

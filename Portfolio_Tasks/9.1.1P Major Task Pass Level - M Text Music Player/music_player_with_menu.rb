@@ -3,12 +3,12 @@
 require_relative 'input_functions'
 
 class Album
-  attr_accessor :album_artist, :album_title, :album_label, :album_genre, :album_tracks
+  attr_accessor :album_artist, :album_title, :album_record_label, :album_genre, :album_tracks
 
-  def initialize(album_artist, album_title, record_label, album_genre, album_tracks)
+  def initialize(album_artist, album_title, album_record_label, album_genre, album_tracks)
     @album_artist = album_artist
     @album_title = album_title
-    @album_label = record_label
+    @album_record_label = album_record_label
     @album_genre = album_genre
     @album_tracks = album_tracks
   end
@@ -28,7 +28,7 @@ module Genre
   POP, CLASSIC, JAZZ, ROCK = *1..4
 end
 
-$genre_names = ["Null", "Pop", "Classic", "Jazz", "Rock"]
+$genre_names = %w[Null Pop Classic Jazz Rock]
 
 # points the functions towards the file directory
 # opens the file for reading
@@ -68,9 +68,9 @@ end
 def load_track(album_file)
   # debug
   puts 'loading track'
-  track_name = album_file.gets
-  track_location = album_file.gets
-  track_duration = album_file.gets
+  track_name = album_file.gets.chomp
+  track_location = album_file.gets.chomp
+  track_duration = album_file.gets.chomp
   Track.new(track_name, track_location, track_duration)
 end
 
@@ -98,10 +98,10 @@ end
 def load_album(album_file)
   # debug
   puts 'Debug: loading album'
-  album_artist = album_file.gets
-  album_name = album_file.gets
-  album_duration = album_file.gets
-  album_genre = album_file.gets.to_i
+  album_artist = album_file.gets.chomp
+  album_name = album_file.gets.chomp
+  album_duration = album_file.gets.chomp
+  album_genre = album_file.gets.chomp.to_i
   album_tracks = load_tracks(album_file)
   # stores the variables in the class
   Album.new(album_artist, album_name, album_duration, album_genre, album_tracks)
@@ -159,7 +159,7 @@ def display_all_albums(albums)
     # there are \n after each gets and so ,Name would be printed in a new line
     # strip chomps down after the input
     # using gets.chomp in the loading phase is also an option
-    puts "Album #{index + 1} - Artist: #{album.album_artist.strip}, Name: #{album.album_title.strip}, Label: #{album.album_label.strip}"
+    puts "Album #{index + 1} - Artist: #{album.album_artist}, Name: #{album.album_title}, Label: #{album.album_record_label}"
     index += 1
   end
 end
@@ -170,18 +170,18 @@ def display_albums_by_genre(albums)
   genre = read_integer_in_range('Please enter your choice:', 1, 4)
   index = 0
   count = 0
-  number = albums.length
-  while index < number
+  album_count = albums.length
+  while index < album_count
     album = albums[index]
     # Check the genre of each album, using == for comparison
     if album.album_genre == genre
-      puts "Album #{index + 1} - Artist: #{album.album_artist.strip}, Name: #{album.album_title.strip}, Label: #{album.album_label.strip}"
+      puts "Album #{index + 1} - Artist: #{album.album_artist}, Name: #{album.album_title}, Label: #{album.album_record_label}"
       count += 1
     end
     index += 1
   end
   if count > 0
-    puts count.to_s + " Album(s) found."
+    puts "#{count} Album(s) found."
   else
     puts 'No albums found.'
   end
@@ -238,7 +238,7 @@ def play_track(album)
   return unless track_number >= 1 && track_number <= album.album_tracks.length
 
   track = album.album_tracks[track_number]
-  puts "Now playing: #{track.track_name.strip} from #{album.album_title.strip}"
+  puts "Now playing: #{track.track_name} from #{album.album_title}"
   puts "Duration: #{track.track_duration}"
   sleep 10
 end
