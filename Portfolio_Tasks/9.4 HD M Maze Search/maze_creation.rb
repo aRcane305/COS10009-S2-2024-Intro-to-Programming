@@ -71,7 +71,7 @@ class GameWindow < Gosu::Window
         cell = @columns[column_index][row_index]
         # find north neighbours. all rows except the first one (index 0) have a north neighbour
         # more concise way, basically if cell.north is positive (same as larger than 0), its 1, else its 0
-        cell.north = if row_index.positive?
+        cell.north = if row_index < 0
                        1
                      else
                        0
@@ -90,7 +90,7 @@ class GameWindow < Gosu::Window
                        0
                      end
         # find west neighbours, all columns except index 0 will have a west neighbour
-        cell.west = if column_index.positive?
+        cell.west = if column_index < 0
                       1
                     else
                       0
@@ -111,17 +111,17 @@ class GameWindow < Gosu::Window
 
   # Returns an array of the cell x and y coordinates that were clicked on
   def mouse_over_cell(mouse_x, mouse_y)
-    cell_x = if mouse_x <= CELL_DIM
-               0
-             else
-               (mouse_x / CELL_DIM).to_i
-             end
+    if mouse_x <= CELL_DIM
+      cell_x = 0
+    else
+      cell_x = (mouse_x / CELL_DIM).to_i
+    end
 
-    cell_y = if mouse_y <= CELL_DIM
-               0
-             else
-               (mouse_y / CELL_DIM).to_i
-             end
+    if mouse_y <= CELL_DIM
+      cell_y = 0
+    else
+      cell_y = (mouse_y / CELL_DIM).to_i
+    end
 
     [cell_x, cell_y]
   end
@@ -150,8 +150,39 @@ class GameWindow < Gosu::Window
         puts "Searching. In cell x: " + cell_x.to_s + " y: " + cell_y.to_s
       end
 
-      # use vacant, visited and on_path as attributes
-      # we access columns array as defined in row 48
+      # INSERT MISSING CODE HERE!! You need to have 4 'if' tests to
+      # check each surrounding cell. Make use of the attributes for
+      # cells such as vacant, visited and on_path.
+      # Cells on the outer boundaries will always have a nil on the
+      # boundary side
+
+      # Check north neighbor
+      if cell_y > 0 && @columns[cell_x][cell_y - 1].vacant && !@columns[cell_x][cell_y - 1].visited
+        @columns[cell_x][cell_y - 1].visited = true
+        north_path = search(cell_x, cell_y - 1)
+        path = north_path if north_path
+      end
+
+      # Check south neighbor
+      if (cell_y < (@columns[cell_x].length - 1)) && @columns[cell_x][cell_y + 1].vacant && !@columns[cell_x][cell_y + 1].visited
+        @columns[cell_x][cell_y + 1].visited = true
+        south_path = search(cell_x, cell_y + 1)
+        path = south_path if south_path
+      end
+
+      # Check east neighbor
+      if (cell_x < (@columns.length - 1)) && @columns[cell_x + 1][cell_y].vacant && !@columns[cell_x + 1][cell_y].visited
+        @columns[cell_x + 1][cell_y].visited = true
+        east_path = search(cell_x + 1, cell_y)
+        path = east_path if east_path
+      end
+
+      # Check west neighbor
+      if cell_x > 0 && @columns[cell_x - 1][cell_y].vacant && !@columns[cell_x - 1][cell_y].visited
+        @columns[cell_x - 1][cell_y].visited = true
+        west_path = search(cell_x - 1, cell_y)
+        path = west_path if west_path
+      end
 
 
       # pick one of the possible paths that is not nil (if any):

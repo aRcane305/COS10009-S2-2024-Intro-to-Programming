@@ -2,176 +2,176 @@
 Another Friday Night
 Joel Corry
 Atlantic Records UK
-/images/Another_Friday_Night.jpg
+Another_Friday_Night.jpg
 2023
 2
 13
 Desire
-/music_files/Another_Friday_Night/01_-_Desire.ogg
+01_-_Desire.ogg
 2:39
 0800 Heaven
-/music_files/Another_Friday_Night/02_-_0800_Heaven.ogg
+02_-_0800_Heaven.ogg
 2:39
 Lionheart (Fearless)
-/music_files/Another_Friday_Night/03_-_Lionheart_(Fearless).ogg
+03_-_Lionheart_(Fearless).ogg
 3:06
 HISTORY
-/music_files/Another_Friday_Night/04_-_HISTORY.ogg
+04_-_HISTORY.ogg
 2:56
 Head & Heart (feat. MNEK)
-/music_files/Another_Friday_Night/05_-_Head_&_Heart_(feat._MNEK).ogg
+05_-_Head_&_Heart_(feat._MNEK).ogg
 2:46
 BED
-/music_files/Another_Friday_Night/06_-_BED.ogg
+06_-_BED.ogg
 2:58
 OUT OUT (feat. Charli XCX & Saweetie)
-/music_files/Another_Friday_Night/07_-_OUT_OUT_(feat._Charli_XCX_&_Saweetie).ogg
+07_-_OUT_OUT_(feat._Charli_XCX_&_Saweetie).ogg
 2:42
 Dance Around It
-/music_files/Another_Friday_Night/08_-_Dance_Around_It.ogg
+08_-_Dance_Around_It.ogg
 2:24
 Do U Want Me Baby? (feat. Elphi)
-/music_files/Another_Friday_Night/09_-_Do_U_Want_Me_Baby__(feat._Elphi).ogg
+09_-_Do_U_Want_Me_Baby__(feat._Elphi).ogg
 2:23
 Sorry
-/music_files/Another_Friday_Night/10_-_Sorry.ogg
+10_-_Sorry.ogg
 3:08
 Lonely
-/music_files/Another_Friday_Night/11_-_Lonely.ogg
+11_-_Lonely.ogg
 3:10
 I Wish (feat. Mabel)
-/music_files/Another_Friday_Night/12_-_I_Wish_(feat._Mabel).ogg
+12_-_I_Wish_(feat._Mabel).ogg
 3:01
 What Would You Do?
-/music_files/Another_Friday_Night/13_-_What_Would_You_Do_.ogg
+13_-_What_Would_You_Do_.ogg
 2:54
 ASTROWORLD
 Travis Scott
 Cactus Jack - Epic
-/images/ASTROWORLD.jpg
+ASTROWORLD.jpg
 2018
 3
 17
 STARGAZING
-/music_files/ASTROWORLD/01_-_STARGAZING.ogg
+01_-_STARGAZING.ogg
 4:31
 CAROUSEL
-/music_files/ASTROWORLD/02_-_CAROUSEL.ogg
+02_-_CAROUSEL.ogg
 3:00
 SICKO MODE
-/music_files/ASTROWORLD/03_-_SICKO_MODE.ogg
+03_-_SICKO_MODE.ogg
 5:13
 R.I.P. SCREW
-/music_files/ASTROWORLD/04_-_R.I.P._SCREW.ogg
+04_-_R.I.P._SCREW.ogg
 3:06
 STOP TRYING TO BE GOD
-/music_files/ASTROWORLD/05_-_STOP_TRYING_TO_BE_GOD.ogg
+05_-_STOP_TRYING_TO_BE_GOD.ogg
 5:38
 NO BYSTANDERS
-/music_files/ASTROWORLD/06_-_NO_BYSTANDERS.ogg
+06_-_NO_BYSTANDERS.ogg
 3:38
 SKELETONS
-/music_files/ASTROWORLD/07_-_SKELETONS.ogg
+07_-_SKELETONS.ogg
 2:26
 WAKE UP
-/music_files/ASTROWORLD/08_-_WAKE_UP.ogg
+08_-_WAKE_UP.ogg
 3:52
 5% TINT
-/music_files/ASTROWORLD/09_-_5%_TINT.ogg
+09_-_5%_TINT.ogg
 3:16
 NC-17
-/music_files/ASTROWORLD/10_-_NC-17.ogg
+10_-_NC-17.ogg
 2:37
 ASTROTHUNDER
-/music_files/ASTROWORLD/11_-_ASTROTHUNDER.ogg
+11_-_ASTROTHUNDER.ogg
 2:23
 YOSEMITE
-/music_files/ASTROWORLD/12_-_YOSEMITE.ogg
+12_-_YOSEMITE.ogg
 2:30
-CAN'T_SAY
-/music_files/ASTROWORLD/13_-_CAN'T_SAY.ogg
+CAN'T SAY
+13_-_CAN'T_SAY.ogg
 3:18
 WHO? WHAT!
-/music_files/ASTROWORLD/14_-_WHO__WHAT!.ogg
+14_-_WHO__WHAT!.ogg
 2:57
 BUTTERFLY EFFECT
-/music_files/ASTROWORLD/15_-_BUTTERFLY_EFFECT.ogg
+15_-_BUTTERFLY_EFFECT.ogg
 3:11
 HOUSTONFORNICATION
-/music_files/ASTROWORLD/16_-_HOUSTONFORNICATION.ogg
+16_-_HOUSTONFORNICATION.ogg
 3:38
 COFFEE BEAN
-/music_files/ASTROWORLD/17_-_COFFEE_BEAN.ogg
+17_-_COFFEE_BEAN.ogg
 3:29
 Little Dark Age
 MGMT
 Columbia
-/images/Little_Dark_Age.jpg
+Little_Dark_Age.jpg
 2018
 8
 10
 She Works Out Too Much
-/music_files/Little_Dark_Age/01_-_She_Works_Out_Too_Much.ogg
+01_-_She_Works_Out_Too_Much.ogg
 4:38
 Little Dark Age
-/music_files/Little_Dark_Age/02_-_Little_Dark_Age.ogg
+02_-_Little_Dark_Age.ogg
 5:00
 When You Die
-/music_files/Little_Dark_Age/03_-_When_You_Die.ogg
+03_-_When_You_Die.ogg
 4:24
 Me and Michael
-/music_files/Little_Dark_Age/04_-_Me_and_Michael.ogg
+04_-_Me_and_Michael.ogg
 4:50
 TSLAMP
-/music_files/Little_Dark_Age/05_-_TSLAMP.ogg
+05_-_TSLAMP.ogg
 4:30
 James
-/music_files/Little_Dark_Age/06_-_James.ogg
+06_-_James.ogg
 3:53
 Days That Got Away
-/music_files/Little_Dark_Age/07_-_Days_That_Got_Away.ogg
+07_-_Days_That_Got_Away.ogg
 4:45
 One Thing Left to Try
-/music_files/Little_Dark_Age/08_-_One_Thing_Left_to_Try.ogg
+08_-_One_Thing_Left_to_Try.ogg
 4:20
 When You're Small
-/music_files/Little_Dark_Age/09_-_When_You're_Small.ogg
+09_-_When_You're_Small.ogg
 3:31
 Hand It Over
-/music_files/Little_Dark_Age/10_-_Hand_It_Over.ogg
+10_-_Hand_It_Over.ogg
 4:14
 Thriller
 Michael Jackson
 Epic
-/images/Thriller.jpg
+Thriller.jpg
 1982
 6
 9
 Wanna Be Startin' Somethin' (Album Version)
-/music_files/Thriller/01_-_Wanna_Be_Startin'_Somethin'_(Album_Version).ogg
+01_-_Wanna_Be_Startin'_Somethin'_(Album_Version).ogg
 6:03
 Baby Be Mine (Album Version)
-/music_files/Thriller/02_-_Baby_Be_Mine_(Album_Version).ogg
+02_-_Baby_Be_Mine_(Album_Version).ogg
 4:20
 The Girl Is Mine (with Paul McCartney) (Album Version)
-/music_files/Thriller/03_-_The_Girl_Is_Mine_(with_Paul_McCartney)_(Album_Version).ogg
+03_-_The_Girl_Is_Mine_(with_Paul_McCartney)_(Album_Version).ogg
 3:42
 Thriller (Album Version)
-/music_files/Thriller/04_-_Thriller_(Album_Version).ogg
+04_-_Thriller_(Album_Version).ogg
 5:59
-Beat_It
-/music_files/Thriller/05_-_Beat_It.ogg
+Beat It
+05_-_Beat_It.ogg
 4:18
 Billie Jean (Single Version)
-/music_files/Thriller/06_-_Billie_Jean_(Single_Version).ogg
+06_-_Billie_Jean_(Single_Version).ogg
 4:54
 Human Nature (Album Version)
-/music_files/Thriller/07_-_Human_Nature_(Album_Version).ogg
+07_-_Human_Nature_(Album_Version).ogg
 4:06
 P.Y.T. (Pretty Young Thing) (Album Version)
-/music_files/Thriller/08_-_P.Y.T._(Pretty_Young_Thing)_(Album_Version).ogg
+08_-_P.Y.T._(Pretty_Young_Thing)_(Album_Version).ogg
 3:58
 The Lady in My Life (Album Version)
-/music_files/Thriller/09_-_The_Lady_in_My_Life_(Album_Version).ogg
+09_-_The_Lady_in_My_Life_(Album_Version).ogg
 4:58
 
